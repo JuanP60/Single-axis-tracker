@@ -1,8 +1,15 @@
 import React from "react";
 import ReactDOM from 'react-dom';
+import NavBar from "./NavBar";
+import Table from "./Table";
 
 function App(){
-    return <h1>Interfaz solar tracker single axis</h1>
+    return (
+        <div>
+            <NavBar />
+            <Table />
+        </div>
+    )
 }
 
 export default App;
