@@ -2,12 +2,12 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyB7bwGLndBxHWfE5aPKJA_jtIlcgl9pq2A",
-  authDomain: "dbsolartracking.firebaseapp.com",
-  projectId: "dbsolartracking",
-  storageBucket: "dbsolartracking.firebasestorage.app",
-  messagingSenderId: "151977321429",
-  appId: "1:151977321429:web:9ee49aaecff8706146535c"
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
 };
 
 const app = initializeApp(firebaseConfig);

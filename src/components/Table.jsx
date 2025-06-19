@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { db } from "../firebase";
 import { collection, getDocs, query, where, orderBy, limit, Timestamp } from "firebase/firestore";
+import ExportarExcel from "./ExportarExcel";
+import table from "../styles/table.scss";
 
 function Table() {
   const [datos, setDatos] = useState([]);
@@ -27,7 +29,7 @@ function Table() {
       const docs = snapshot.docs.map((doc) => ({
         id: doc.id,
         ...doc.data(),
-      }));
+      }));    
 
       setDatos(docs);
     } catch (err) {
@@ -40,47 +42,59 @@ function Table() {
   }, [fechaInicio, fechaFin]);
 
   return (
-    <div>
-      <h2>Mediciones del sistema</h2>
-      <div className="filtro-fecha">
-        <label>Desde: </label>
-        <input type="date" value={fechaInicio} onChange={(e) => setFechaInicio(e.target.value)} />
-        <label>Hasta: </label>
-        <input type="date" value={fechaFin} onChange={(e) => setFechaFin(e.target.value)} />
-        <button onClick={() => {
-          setFechaInicio("");
-          setFechaFin("");
-        }}>
-          Limpiar filtros
-        </button>
-      </div>
+    <div className="content-parent">   
+        <div className="text-left">
+            <h2>breve texto</h2>
+        </div>
 
-      <table>
-        <thead>
-          <tr>
-            <th>Fecha</th>
-            <th>Voltaje (V)</th>
-            <th>Corriente (A)</th>
-            <th>Potencia (W)</th>
-          </tr>
-        </thead>
-        <tbody>
-          {datos.length > 0 ? (
-            datos.map((d) => (
-              <tr key={d.id}>
-                <td>{new Date(d.timestamp.seconds * 1000).toLocaleString()}</td>
-                <td>{d.voltaje}</td>
-                <td>{d.corriente}</td>
-                <td>{d.potencia}</td>
-              </tr>
-            ))
-          ) : (
-            <tr><td colSpan={4}>No hay datos disponibles.</td></tr>
-          )}
-        </tbody>
-      </table>
+        <div className="tables-parent">
 
-      {!filtrando && <p>Mostrando los últimos 10 registros recientes por defecto.</p>}
+          <h2>Mediciones del sistema</h2>
+          <div className="filtro-fecha">
+              <label>Desde: </label>
+              <input className="input-fecha" type="date" value={fechaInicio} onChange={(e) => setFechaInicio(e.target.value)} />
+              <label>Hasta: </label>
+              <input className="output-fecha" type="date" value={fechaFin} onChange={(e) => setFechaFin(e.target.value)} />
+              
+              <button onClick={() => {
+              setFechaInicio("");
+              setFechaFin("");
+              }} className="fecha-btn">
+              Limpiar filtros
+              </button>
+          </div>
+
+          <div className="table-container">
+            <table>
+              <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Voltaje (V)</th>
+                    <th>Corriente (A)</th>
+                    <th>Potencia (W)</th>
+                </tr>
+              </thead>
+              <tbody>
+              {datos.length > 0 ? (
+                  datos.map((d) => (
+                  <tr key={d.id}>
+                      <td>{new Date(d.timestamp.seconds * 1000).toLocaleString()}</td>
+                      <td>{d.voltaje}</td>
+                      <td>{d.corriente}</td>
+                      <td>{d.potencia}</td>
+                  </tr>
+                  ))
+              ) : (
+                  <tr><td colSpan={4}>No hay datos disponibles.</td></tr>
+              )}
+              </tbody>
+            </table>
+          </div>
+
+          {!filtrando && <p>Mostrando los últimos 10 registros recientes por defecto.</p>}
+
+          <ExportarExcel data={datos} />
+        </div>
     </div>
   );
 }

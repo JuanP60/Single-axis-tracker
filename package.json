@@ -11,12 +11,18 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@mui/icons-material": "^7.1.2",
+    "@mui/material": "^7.1.2",
     "dotenv": "^16.5.0",
+    "file-saver": "^2.0.5",
     "firebase": "^11.9.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-scripts": "^5.0.1",
-    "sass": "^1.89.1"
+    "sass": "^1.89.1",
+    "xlsx": "^0.18.5"
   },
   "browserslist": {
     "production": [
