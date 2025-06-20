@@ -23,8 +23,46 @@
     .text-left{
         display: flex;
         flex-direction: column;
-        width: 15%;
-        margin-right: 20%;
+        margin-right: 8%;
+        align-items: center;
+
+
+        .img-container{
+          border-radius: 10px;
+          overflow: hidden;
+          height: 200px;
+          width: 400px;
+          margin-top: 8%;
+
+          img{
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+          }
+        }
+
+        .text-container{
+          width: 600px;
+
+           p{
+            text-align: left;   
+            letter-spacing: 1px;
+            margin-top: 9%;
+            font-family: "Roboto", serif;
+            font-weight: 280;
+            font-style: italic;
+    
+           }
+        }
+
+        h2{
+          font-family: "Roboto", sans-serif;
+          font-weight: 300;
+          font-style: italic;
+          font-size: 2rem;
+          letter-spacing: 1px;
+          
+        }
     }
 
     .tables-parent{
@@ -37,7 +75,7 @@
         font-weight: 300;
         font-style: italic;
         font-size: 2rem;
-        letter-spacing: 3px;
+        letter-spacing: 1px;
       }
 
       .filtro-fecha{

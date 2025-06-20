@@ -44,7 +44,23 @@ function Table() {
   return (
     <div className="content-parent">   
         <div className="text-left">
-            <h2>breve texto</h2>
+          <h2>Monitoreo en tiempo real del sistema fotovoltaico</h2>
+            <div className="img-container">
+              <img src="/images/panel-img.png" alt="imagen_panel_solar" />
+            </div>
+
+            <div className="text-container">
+              <p>
+                La siguiente tabla muestra los datos eléctricos adquiridos desde el panel solar 
+                mediante un sensor de corriente y voltaje (INA219), incluyendo valores de voltaje (V), 
+                Corriente (A) y potencia (W). Estos datos permiten evaluar el rendimiento del sistema, 
+                detectar posibles fallos, y optimizar la orientación del panel para maximizar la captación
+                de energía solar. Cada registro cuenta con una marca de tiempo sincronizada mediante NTP,
+                asegurando la trazabilidad del comportamiento del sistema en distintas condiciones ambientales.
+              </p>
+
+            </div>
+            
         </div>
 
         <div className="tables-parent">
